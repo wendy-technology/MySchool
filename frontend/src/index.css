@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --algerian-green: #006233;
+  --algerian-red: #ce1126;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Cairo', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  font-family: 'Cairo', 'Arial', sans-serif;
+}
+
+[dir="rtl"] .ant-layout-sider {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .ant-menu {
+  text-align: right;
+}
+
+/* Custom Ant Design overrides */
+.ant-layout-sider {
+  background: linear-gradient(180deg, #1e40af 0%, #1d4ed8 100%);
+}
+
+.ant-menu-dark {
+  background: transparent;
+}
+
+.ant-menu-dark.ant-menu-inline .ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin: 4px 8px;
+}
+
+.ant-card {
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.ant-btn-primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 8px;
+}
+
+.ant-btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Dashboard specific styles */
+.dashboard-card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200;
+}
+
+.stat-card {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-lg;
+}
+
+.stat-card.green {
+  @apply from-green-500 to-green-600;
+}
+
+.stat-card.orange {
+  @apply from-orange-500 to-orange-600;
+}
+
+.stat-card.red {
+  @apply from-red-500 to-red-600;
+}
+
+/* Table styles */
+.custom-table {
+  @apply bg-white rounded-lg shadow-sm overflow-hidden;
+}
+
+.custom-table .ant-table-thead > tr > th {
+  @apply bg-gray-50 font-semibold text-gray-700 border-b-2 border-gray-200;
+}
+
+/* Form styles */
+.custom-form .ant-form-item-label > label {
+  @apply font-medium text-gray-700;
+}
+
+.custom-form .ant-input,
+.custom-form .ant-select-selector {
+  @apply border-gray-300 rounded-lg;
+}
+
+.custom-form .ant-input:focus,
+.custom-form .ant-select-focused .ant-select-selector {
+  @apply border-blue-500 shadow-sm;
+}
+
+/* Notification styles */
+.ant-notification {
+  border-radius: 12px;
+}
+
+.ant-notification-notice {
+  border-radius: 12px;
+}
+
+/* Sidebar brand */
+.sidebar-brand {
+  @apply text-white text-xl font-bold p-4 border-b border-white border-opacity-20;
+}
+
+/* Page header */
+.page-header {
+  @apply bg-white shadow-sm border-b border-gray-200 p-6 mb-6;
+}
+
+.page-title {
+  @apply text-2xl font-bold text-gray-900;
+}

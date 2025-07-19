@@ -1,0 +1,27 @@
+{
+  "name": "myschool-fullstack",
+  "version": "1.0.0",
+  "description": "MySchool - Système de gestion scolaire algérien (Full Stack)",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "backend:test": "cd backend && npm test",
+    "backend:install": "cd backend && npm install",
+    "backend:db:generate": "cd backend && npm run db:generate",
+    "backend:db:push": "cd backend && npm run db:push",
+    "backend:db:seed": "cd backend && npm run db:seed",
+    "backend:db:reset": "cd backend && npm run db:reset",
+    "frontend:dev": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:preview": "cd frontend && npm run preview",
+    "frontend:install": "cd frontend && npm install",
+    "install:all": "npm run backend:install && npm run frontend:install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": ["education", "school", "algeria", "api", "frontend", "fullstack"],
+  "author": "Your Name",
+  "license": "MIT"
+}
