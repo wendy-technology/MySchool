@@ -22,6 +22,7 @@ export interface User {
   role: UserRole
   estActif: boolean
   etablissementId: string
+  photoUrl?: string
   createdAt: Date
   updatedAt: Date
 }
@@ -299,14 +300,121 @@ export interface DashboardStats {
 // Form Types
 export interface CreateUserForm {
   email: string
-  password: string
+  motDePasse: string
+  nom: string
+  prenom: string
+  nomArabe?: string
+  prenomArabe?: string
+  telephone?: string
+  adresse?: string
+  dateNaissance?: string
+  lieuNaissance?: string
+  role: UserRole
+  etablissementId: string
+}
+
+export interface UpdateUserForm {
+  email?: string
+  nom?: string
+  prenom?: string
+  nomArabe?: string
+  prenomArabe?: string
+  telephone?: string
+  adresse?: string
+  dateNaissance?: string
+  lieuNaissance?: string
+  estActif?: boolean
+}
+
+// User Management Types
+export interface UserFilters {
+  role?: UserRole | ''
+  estActif?: boolean | ''
+  search?: string
+  page?: number
+  limit?: number
+}
+
+export interface UserTableData extends User {
+  key: string
+  etablissement?: Etablissement
+  enseignant?: Enseignant
+  eleve?: Eleve
+  parent?: Parent
+}
+
+// Formulaires spécialisés par rôle
+export interface CreateEnseignantForm extends CreateUserForm {
+  matricule?: string
+  specialite: string
+  specialiteArabe?: string
+  matiereIds?: string[]
+}
+
+export interface CreateEleveForm extends CreateUserForm {
+  numeroEleve?: string
+  classeId: string
+  parentIds?: string[]
+}
+
+export interface CreateParentForm extends CreateUserForm {
+  profession?: string
+  professionArabe?: string
+  enfantIds?: string[]
+  lienParente?: string
+}
+
+// Responses spécialisées
+export interface UserWithDetails extends User {
+  etablissement?: Etablissement
+  enseignant?: Enseignant & { 
+    matieres?: Matiere[]
+  }
+  eleve?: Eleve & { 
+    classe?: Classe
+    parents?: Parent[]
+  }
+  parent?: Parent & {
+    enfants?: Eleve[]
+  }
+}
+
+// Actions et permissions
+export interface UserAction {
+  type: 'view' | 'edit' | 'delete' | 'activate' | 'deactivate' | 'reset-password'
+  userId: string
+  label: string
+  icon: string
+  danger?: boolean
+  disabled?: boolean
+}
+
+// Import/Export
+export interface ImportUserData {
+  email: string
   nom: string
   prenom: string
   nomArabe?: string
   prenomArabe?: string
   telephone?: string
   role: UserRole
-  etablissementId: string
+  specialite?: string // Pour enseignants
+  classeNom?: string // Pour élèves
+  profession?: string // Pour parents
+}
+
+export interface ImportResult {
+  success: number
+  errors: Array<{
+    line: number
+    data: ImportUserData
+    error: string
+  }>
+  warnings: Array<{
+    line: number
+    data: ImportUserData
+    warning: string
+  }>
 }
 
 export interface CreateEvaluationForm {

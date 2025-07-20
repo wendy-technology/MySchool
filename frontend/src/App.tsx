@@ -11,6 +11,9 @@ import ProtectedRoute from '@/components/auth/ProtectedRoute'
 import MainLayout from '@/components/layout/MainLayout'
 import LoginPage from '@/pages/auth/LoginPage'
 import AdminDashboard from '@/pages/admin/AdminDashboard'
+import UsersListPage from '@/pages/admin/users/UsersListPage'
+import CreateUserPage from '@/pages/admin/users/CreateUserPage'
+import EditUserPage from '@/pages/admin/users/EditUserPage'
 
 // Configure dayjs
 dayjs.locale('fr')
@@ -71,6 +74,66 @@ const App: React.FC = () => {
                           element={
                             <ProtectedRoute allowedRoles={['ADMIN']}>
                               <AdminDashboard />
+                            </ProtectedRoute>
+                          }
+                        />
+                        
+                        {/* User Management Routes */}
+                        <Route
+                          path="/admin/utilisateurs"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <UsersListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/enseignants"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <UsersListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/eleves"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <UsersListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/parents"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <UsersListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        
+                        {/* User Form Routes */}
+                        <Route
+                          path="/admin/utilisateurs/nouveau"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <CreateUserPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/utilisateurs/:id/modifier"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <EditUserPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/utilisateurs/:id"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <EditUserPage />
                             </ProtectedRoute>
                           }
                         />
