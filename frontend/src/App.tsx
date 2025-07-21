@@ -14,6 +14,12 @@ import AdminDashboard from '@/pages/admin/AdminDashboard'
 import UsersListPage from '@/pages/admin/users/UsersListPage'
 import CreateUserPage from '@/pages/admin/users/CreateUserPage'
 import EditUserPage from '@/pages/admin/users/EditUserPage'
+import EtablissementsListPage from '@/pages/admin/etablissements/EtablissementsListPage'
+import CreateEtablissementPage from '@/pages/admin/etablissements/CreateEtablissementPage'
+import ClassesListPage from '@/pages/admin/classes/ClassesListPage'
+import CreateClassePage from '@/pages/admin/classes/CreateClassePage'
+import MatieresListPage from '@/pages/admin/matieres/MatieresListPage'
+import CreateMatierePage from '@/pages/admin/matieres/CreateMatierePage'
 
 // Configure dayjs
 dayjs.locale('fr')
@@ -134,6 +140,60 @@ const App: React.FC = () => {
                           element={
                             <ProtectedRoute allowedRoles={['ADMIN']}>
                               <EditUserPage />
+                            </ProtectedRoute>
+                          }
+                        />
+
+                        {/* Etablissement Routes */}
+                        <Route
+                          path="/admin/etablissements"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <EtablissementsListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/etablissements/nouveau"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <CreateEtablissementPage />
+                            </ProtectedRoute>
+                          }
+                        />
+
+                        {/* Classes Routes */}
+                        <Route
+                          path="/admin/classes"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <ClassesListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/classes/nouvelle"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <CreateClassePage />
+                            </ProtectedRoute>
+                          }
+                        />
+
+                        {/* Matieres Routes */}
+                        <Route
+                          path="/admin/matieres"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <MatieresListPage />
+                            </ProtectedRoute>
+                          }
+                        />
+                        <Route
+                          path="/admin/matieres/nouvelle"
+                          element={
+                            <ProtectedRoute allowedRoles={['ADMIN']}>
+                              <CreateMatierePage />
                             </ProtectedRoute>
                           }
                         />

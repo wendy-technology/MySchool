@@ -2,9 +2,7 @@ import axios from 'axios'
 import { notification } from 'antd'
 
 // Base API configuration
-const API_BASE_URL = import.meta.env.DEV 
-  ? '/api'  // Proxy en développement
-  : 'http://localhost:3000/api'  // Direct en production
+const API_BASE_URL = 'http://localhost:3000/api'  // Direct pour debug
 
 // Create axios instance
 const api = axios.create({

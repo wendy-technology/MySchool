@@ -79,28 +79,11 @@ const CreateUserPage: React.FC = () => {
       console.log('Données complètes à envoyer:', userData)
       
       try {
-        switch (values.role) {
-          case 'ENSEIGNANT':
-            console.log('Appel createTeacher avec:', userData)
-            newUser = await UserService.createTeacher(userData as CreateEnseignantForm)
-            console.log('✅ Enseignant créé:', newUser)
-            break
-          case 'ELEVE':
-            console.log('Appel createStudent avec:', userData)
-            newUser = await UserService.createStudent(userData as CreateEleveForm)
-            console.log('✅ Élève créé:', newUser)
-            break
-          case 'PARENT':
-            console.log('Appel createParent avec:', userData)
-            newUser = await UserService.createParent(userData as CreateParentForm)
-            console.log('✅ Parent créé:', newUser)
-            break
-          default:
-            console.log('Appel createUser avec:', userData)
-            newUser = await UserService.createUser(userData as CreateUserForm)
-            console.log('✅ Utilisateur créé:', newUser)
-            break
-        }
+        // Utiliser la création générique pour tous les types d'utilisateurs
+        // Les spécificités seront ajoutées plus tard quand le backend sera prêt
+        console.log('Appel createUser générique avec:', userData)
+        newUser = await UserService.createUser(userData as CreateUserForm)
+        console.log('✅ Utilisateur créé:', newUser)
         
         console.log('🎉 Création réussie, redirection en cours...')
         message.success(`${getRoleLabel(values.role)} créé(e) avec succès!`)
